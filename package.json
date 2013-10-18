@@ -1,0 +1,41 @@
+{
+  "name": "microbial",
+  "description": "A micro services toolkit",
+  "keywords": [
+    "micro",
+    "services",
+    "micro-services",
+    "toolkit"
+  ],
+  "version": "0.0.1",
+  "license": "MIT",
+  "homepage": "http://node-microbial.org",
+  "author": "Peter Elger (http://peterelger.com/)",
+  "contributors": [
+    "Peter Elger <elger.peter@gmail.com> (http://peterelger.com/)",
+    "Richard Rodger <richard@ricebridge.com> (http://richardrodger.com/)"
+  ],
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "underscore": "~1.4.2",
+    "patrun": "~0.1.2",
+    "postal": "~0.8.9"
+  },
+  "main": "lib/microbial",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pelger/microbial.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "load-grunt-tasks": "~0.1.0",
+    "chai": "~1.8.1",
+    "matchdep": "~0.3.0",
+    "mocha": "~1.13.0",
+    "grunt-mocha-test": "~0.7.0",
+    "grunt-mocha-cov": "0.0.7"
+  }
+}
