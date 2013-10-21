@@ -21,7 +21,8 @@
   "dependencies": {
     "underscore": "~1.4.2",
     "patrun": "~0.1.2",
-    "postal": "~0.8.9"
+    "postal": "~0.8.9",
+    "axon": "~1.0.0"
   },
   "main": "lib/microbial",
   "repository": {

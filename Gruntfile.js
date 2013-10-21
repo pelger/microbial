@@ -32,12 +32,21 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('setBusPostal', function(){
+    process.env.TEST_BUS = 'postal';
+  });
+
+  grunt.registerTask('setBusAxon', function(){
+    process.env.TEST_BUS = 'axon';
+  });
+
   grunt.registerTask('coverage', [
     'mochacov'
   ]);
 
   grunt.registerTask('test', [
-    'mochaTest'
+    'setBusAxon',
+    'mochaTest',
   ]);
 
   grunt.registerTask('build', [

@@ -18,16 +18,23 @@ var assert = require('chai').assert;
 var mcb;
 
 
-describe('basic test', function(){
+describe('basic test', function() {
   
   beforeEach(function(done) {
+    var testBus = process.env.TEST_BUS ?  process.env.TEST_BUS : 'postal';
+    console.log('testing with ' + testBus);
     var options = {
+      nodeType: 'both',
       bus: {
-        name: 'postal'
-      }
+        name: testBus
+      },
+      'services': [
+        __dirname + '/hello.js',
+        __dirname + '/goodbye.js'
+      ]
     };
     mcb = require('../../../lib/microbial')(options);
-    mcb.tearUp([__dirname + '/hello.js', __dirname + '/goodbye.js']);
+    mcb.tearUp();
     done();
   });
 
@@ -39,6 +46,7 @@ describe('basic test', function(){
 
 
   it('should tearup a service and respond to a request', function(done){
+//    this.timeout(1000000);
     mcb.request({request: 'say'}, function(res) {
       assert(res.response.say === 'whatever');
       done();
@@ -67,7 +75,7 @@ describe('basic test', function(){
       done();
     }, 1500);
 
-    mcb.request({request: 'fish'}, function(res) {
+    mcb.request({request: 'fish'}, function() {
       assert(false);
     });
   });

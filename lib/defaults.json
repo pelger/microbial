@@ -1,0 +1,11 @@
+{
+  "nodeType": "host",
+  "bus": {
+    "name": "axon"
+  },
+  "services": [
+    "../../test/integration/basic/hello",
+    "../../test/integration/basic/goodbye"
+  ]
+}
+

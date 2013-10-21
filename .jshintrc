@@ -1,5 +1,4 @@
 {
-  "globalstrict": true, 
   "white": false,
   "node": true,
   "browser": true,
@@ -9,7 +8,7 @@
   "curly": true,
   "eqeqeq": true,
   "immed": true,
-  //"indent": 2,
+  "indent": 2,
   "latedef": true,
   "newcap": true,
   "noarg": true,
@@ -21,12 +20,16 @@
   "trailing": true,
   "smarttabs": true,
   "globals": {
+    "angular": true,
+    "document": true, 
     "nf": true, 
     "$":true,
     "_":true,
-    "describe":true,
-    "it":true,
-    "beforeEach":true
-    "afterEach":true
+    "Highcharts": true,
+    "timeseries": true,
+    "describe": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "it": true
   }
 }
