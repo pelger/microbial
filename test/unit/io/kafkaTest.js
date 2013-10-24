@@ -17,10 +17,10 @@
 var assert  = require('chai').assert;
 var bus;
 
-describe('postal test', function(){
+describe('kafka test', function(){
 
   beforeEach(function(done) {
-    var options = require('../../../lib/defaults.postal.json');
+    var options = require('../../../lib/defaults.kafka.json');
     bus = require('../../../lib/kernel/bus')(options);
     assert(bus.request);
     done();

@@ -14,6 +14,7 @@
 
 'use strict';
 
+var fs = require('fs');
 var assert = require('chai').assert;
 var mcb;
 
@@ -22,17 +23,10 @@ describe('basic test', function() {
   
   beforeEach(function(done) {
     var testBus = process.env.TEST_BUS ?  process.env.TEST_BUS : 'postal';
-    console.log('testing with ' + testBus);
-    var options = {
-      nodeType: 'both',
-      bus: {
-        name: testBus
-      },
-      'services': [
-        __dirname + '/hello.js',
-        __dirname + '/goodbye.js'
-      ]
-    };
+    console.log('testing with: ../../../lib/defaults.' + testBus + '.json');
+    var options = require('../../../lib/defaults.' + testBus + '.json');
+    var metaPath = __dirname + '/meta.json';
+    options.bus.meta = metaPath;
     mcb = require('../../../lib/microbial')(options);
     mcb.tearUp();
     done();
@@ -46,10 +40,10 @@ describe('basic test', function() {
 
 
   it('should tearup a service and respond to a request', function(done){
-//    this.timeout(1000000);
+    this.timeout(1000000);
     mcb.request({request: 'say'}, function(res) {
       assert(res.response.say === 'whatever');
-      done();
+      setTimeout(done, 2000);
     });
   });
 

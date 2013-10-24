@@ -1,0 +1,16 @@
+{
+  "nodeType": "host",
+  "bus": {
+    "name": "kafka",
+    "host": "localhost",
+    "port": 1234,
+    "topics": [{"type": "request", "name": "request", "partition": 0},
+               {"type": "response", "name": "response", "partition": 0}],
+    "meta": "/Users/pelger/tmp/microbial.json"
+  },
+  "services": [
+    "../../test/integration/basic/hello",
+    "../../test/integration/basic/goodbye"
+  ]
+}
+

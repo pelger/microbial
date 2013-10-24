@@ -1,9 +1,9 @@
 {
   "nodeType": "host",
   "bus": {
-    "name": "axon"
-    "topics": [{type: 'request', name: 'request'},
-               {type: 'response', name: uuid.v4()}]
+    "name": "postal",
+    "topics": [{"type": "request", "name": "request"},
+               {"type": "response", "name": "$uuid"}]
   },
   "services": [
     "../../test/integration/basic/hello",

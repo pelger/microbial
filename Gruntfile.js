@@ -45,7 +45,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('test', [
-    'setBusAxon',
+    'setBusPostal',
     'mochaTest',
   ]);
 

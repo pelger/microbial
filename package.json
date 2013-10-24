@@ -5,12 +5,16 @@
     "micro",
     "services",
     "micro-services",
-    "toolkit"
+    "micro-service",
+    "microservices",
+    "microservice",
+    "service",
+    "toolkit",
+    "framework"
   ],
   "version": "0.0.1",
   "license": "MIT",
-  "homepage": "http://node-microbial.org",
-  "author": "Peter Elger (http://peterelger.com/)",
+  "author": "Peter Elger (http://nearform.com/)",
   "contributors": [
     "Peter Elger <elger.peter@gmail.com> (http://peterelger.com/)",
     "Richard Rodger <richard@ricebridge.com> (http://richardrodger.com/)"
@@ -22,7 +26,8 @@
     "underscore": "~1.4.2",
     "patrun": "~0.1.2",
     "postal": "~0.8.9",
-    "axon": "~1.0.0"
+    "axon": "~1.0.0",
+    "prozess": "~0.6.4"
   },
   "main": "lib/microbial",
   "repository": {
