@@ -1,6 +1,7 @@
 'use strict';
 
-module.exports = function() {
+module.exports = function(init) {
+  var _db = init.db;
 
   var whatever = function(req, res) {
     res.respond({say: 'whatever'});

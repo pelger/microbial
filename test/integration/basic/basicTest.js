@@ -23,10 +23,8 @@ describe('basic test', function() {
   
   beforeEach(function(done) {
     var testBus = process.env.TEST_BUS ?  process.env.TEST_BUS : 'postal';
-    console.log('testing with: ../../../lib/defaults.' + testBus + '.json');
-    var options = require('../../../lib/defaults.' + testBus + '.json');
-    var metaPath = __dirname + '/meta.json';
-    options.bus.meta = metaPath;
+    console.log('testing with: ' + testBus);
+    var options = require('./options.test.js')(testBus);
     mcb = require('../../../lib/microbial')(options);
     mcb.tearUp();
     done();
