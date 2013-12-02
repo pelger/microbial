@@ -12,7 +12,7 @@
     "toolkit",
     "framework"
   ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "author": "Peter Elger (http://nearform.com/)",
   "contributors": [
@@ -27,7 +27,8 @@
     "patrun": "~0.1.2",
     "postal": "~0.8.9",
     "axon": "~1.0.0",
-    "prozess": "~0.6.4"
+    "prozess": "~0.6.4",
+    "kafkaesque": "0.0.6"
   },
   "main": "lib/microbial",
   "repository": {

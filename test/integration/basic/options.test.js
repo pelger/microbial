@@ -6,7 +6,7 @@ module.exports = function(env) {
 
   var configs = {
     postal: {
-      nodeType: 'host',
+      nodeType: 'both',
       bus: {
         name: 'postal',
         topics: [{type: 'request', name: 'request'},
@@ -18,8 +18,31 @@ module.exports = function(env) {
       ]
     },
     kafka: {
+      nodeType: 'both',
+      bus: {
+        name: 'kafka',
+        config: {brokers: [{host: 'localhost', port: 9092}],
+                                               clientId: 'fish',
+                                               maxBytes: 2000000},
+        topics: [{type: 'request', name: 'request', partition: 0},
+                 {type: 'response', name: 'response', partition: 0}]
+      },
+      services: [
+        {path: __dirname + '/hello', init: {} },
+        {path: __dirname + '/goodbye', init: {} }
+      ]
     },
     axon: {
+      nodeType: 'both',
+      bus: {
+        name: 'axon',
+        topics: [{type: 'request', name: 'request'},
+                 {type: 'response', name: 'response'}]
+      },
+      services: [
+        {path: __dirname + '/hello', init: {} },
+        {path: __dirname + '/goodbye', init: {} }
+      ]
     },
     zeromq: {
     }
