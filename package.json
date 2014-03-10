@@ -28,7 +28,7 @@
     "postal": "~0.8.9",
     "axon": "~1.0.0",
     "prozess": "~0.6.4",
-    "kafkaesque": "0.0.6"
+    "kafkaesque": "pelger/kafkaesque"
   },
   "main": "lib/microbial",
   "repository": {
