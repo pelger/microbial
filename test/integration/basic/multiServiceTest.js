@@ -21,9 +21,9 @@ var mcb;
 describe('basic test', function() {
 
   beforeEach(function(done) {
-    //var testBus = process.env.TEST_BUS ?  process.env.TEST_BUS : 'postal';
+    var testBus = process.env.TEST_BUS ?  process.env.TEST_BUS : 'postal';
     //var testBus = process.env.TEST_BUS ?  process.env.TEST_BUS : 'axon';
-    var testBus = process.env.TEST_BUS ?  process.env.TEST_BUS : 'kafka';
+    //var testBus = process.env.TEST_BUS ?  process.env.TEST_BUS : 'kafka';
     console.log('testing with: ' + testBus);
     var options = require('./options.test.js')(testBus);
     mcb = require('../../../lib/microbial')(options);
