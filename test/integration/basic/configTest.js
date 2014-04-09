@@ -44,8 +44,6 @@ describe('config test', function() {
     var config = mcb.blankConfig();
     mcb.addTopicToConfig(config, 'request', 'queue', 'request', 2, 'random');
     mcb.addTopicToConfig(config, 'response', 'queue', 'response', 1, 'direct');
-    mcb.addServiceToConfig(config, __dirname + '/hello', {});
-    mcb.addServiceToConfig(config, __dirname + '/goodbye', {});
     mcb.writeConfig(config, function(err) {
       assert(!err);
       done();
