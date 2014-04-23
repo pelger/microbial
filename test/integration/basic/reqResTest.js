@@ -14,19 +14,26 @@
 
 'use strict';
 
-var assert = require('chai').assert;
-var def = require('../../testConfig');
+var assert = require('assert');
+var options = { zkroot: 'localhost:2181', namespace: 'canon', start: 'all' };
 var mcb;
+var _slot;
+
 
 describe('basic test', function() {
 
   beforeEach(function(done) {
     this.timeout(1000000);
-    def.setConfig(mcb, function(err, mcb) {
+    mcb = require('../../../lib/microbial')(options);
+    mcb.setup(function(err) {
       assert(!err);
-      mcb.setup(function(err) {
+      mcb.register({topicName: 'response', responseChannel: true}, function(err, slot) {
+        console.log(err);
         assert(!err);
-        done();
+        _slot = slot;
+        mcb.spawn(__dirname + '/services', function() {
+          done();
+        });
       });
     });
   });
@@ -34,15 +41,21 @@ describe('basic test', function() {
 
 
   afterEach(function(done) {
-    mcb.tearDown();
-    done();
+    mcb.deregister({topicName: 'response'}, _slot, function() {
+  //    mcb.kill();
+      setTimeout(function() {
+        mcb.tearDown();
+        done();
+      }, 1000);
+    });
   });
 
 
 
-  it('should tearup a service and respond to a request', function(done){
+  it('should tearup services and respond to a request', function(done){
     this.timeout(1000000);
-    mcb.request({request: 'say'}, function(res) {
+    debugger;
+    mcb.request({topicName: 'request'}, {request: 'say'}, function(res) {
       assert(res.response.say === 'whatever');
       setTimeout(done, 2000);
     });
@@ -50,6 +63,7 @@ describe('basic test', function() {
 
 
 
+  /*
   it('should pattern match correclty', function(done){
     var timer = setTimeout(function() {
       assert('failed no match found!!' === false);
@@ -81,11 +95,9 @@ describe('basic test', function() {
 
   it('should receive a pfo for mumbling by chaining calls between services', function(done){
     this.timeout(1000000);
-    /*
     var timer = setTimeout(function() {
       assert('chain failed!!' === false);
     }, 1500);
-    */
 
     mcb.request({request: 'mumble', greeting: 'hello'}, function(res) {
       assert(res.response.say === 'pfo');
@@ -93,6 +105,7 @@ describe('basic test', function() {
       done();
     });
   });
+  */
 });
 
 

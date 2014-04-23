@@ -17,7 +17,7 @@
 var assert = require('chai').assert;
 var mcb;
 
-var options = { zkroot: 'localhost:2181', namespace: 'config', start: 'config' };
+var options = { zkroot: 'localhost:2181', namespace: 'cfgtest', start: 'config' };
 
 
 describe('config test', function() {
@@ -61,9 +61,11 @@ describe('config test', function() {
 
 
   it('should register and deregister for a topic correctly', function(done){
-    mcb.register('request', function(err, slot) {
+    this.timeout(1000000);
+    debugger;
+    mcb.register({group: 'wibble', topicName: 'request'}, function(err, slot) {
       assert(!err);
-      mcb.deregister('request', slot, function(err) {
+      mcb.deregister({group: 'wibble', topicName: 'request'}, slot, function(err) {
         assert(!err);
         done();
       });
@@ -72,19 +74,34 @@ describe('config test', function() {
 
 
 
+  it('should update the offset position correctly', function(done){
+    this.timeout(1000000);
+    debugger;
+    mcb.register({group: 'wibble', topicName: 'request'}, function(err, slot) {
+      assert(!err);
+      mcb.deregister({group: 'wibble', topicName: 'request'}, slot, function(err) {
+        assert(!err);
+        done();
+      });
+    });
+  });
+
+
+
+  /*
   it('should not register for a topic if all slots are taken', function(done){
-    mcb.register('request', function(err, slot0) {
+    mcb.register({topicName: 'request'}, function(err, slot0) {
       assert(!err);
       assert(slot0 === 0);
-      mcb.register('request', function(err, slot1) {
+      mcb.register({topicName: 'request'}, function(err, slot1) {
         assert(!err);
         assert(slot1 === 1);
-        mcb.register('request', function(err, slot) {
+        mcb.register({topicName: 'request'}, function(err, slot) {
           assert(err);
           assert(slot === -1);
-          mcb.deregister('request', slot1, function(err) {
+          mcb.deregister({topicName: 'request'}, slot1, function(err) {
             assert(!err);
-            mcb.deregister('request', slot0, function(err) {
+            mcb.deregister({topicName: 'request'}, slot0, function(err) {
               assert(!err);
               done();
             });
@@ -93,5 +110,6 @@ describe('config test', function() {
       });
     });
   });
+  */
 });
 
