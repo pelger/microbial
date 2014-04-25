@@ -2,4 +2,4 @@
 
 ## A Node.js micro services toolkit
 
-Experimental!
+Experimental! (ish)
