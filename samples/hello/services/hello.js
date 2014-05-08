@@ -1,7 +1,7 @@
 'use strict';
 
-var options = { zkroot: 'localhost:2181', namespace: 'canon', start: 'all' };
-var mcb = require('microbial')(options);
+var options = { zkroot: 'localhost:2181', namespace: 'canon', start: 'all', ensureTeardown: true };
+var mcb = require('../../../')(options);
 
 
 var whatever = function(req, res) {

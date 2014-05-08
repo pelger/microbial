@@ -29,7 +29,8 @@
     "axon": "~1.0.0",
     "prozess": "~0.6.4",
     "kafkaesque": "0.0.9",
-    "node-zookeeper-client": "~0.2.1"
+    "node-zookeeper-client": "~0.2.1",
+    "uuid": "~1.4.1"
   },
   "main": "lib/microbial",
   "repository": {

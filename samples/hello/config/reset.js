@@ -13,12 +13,18 @@ mcb.setup(function(err) {
     mcb.addTopicToConfig(config, 'response', 'queue', 3, 'direct');
 
     console.log(JSON.stringify(config, null, 2));
-    mcb.writeConfig(config, function(err) {
-      mcb.tearDown();
-      if (err) {
-        console.log(err);
-      }
-      console.log('done');
+    mcb.deregisterAll('hello', 'request', function() {
+      mcb.deregisterAll('hello', 'response', function() {
+        mcb.deregisterAll('goodbye', 'request', function() {
+          mcb.deregisterAll('canonicalProducer', 'response', function() {
+            mcb.tearDown();
+            if (err) {
+              console.log(err);
+            }
+            console.log('done');
+          });
+        });
+      });
     });
   }
   else {
