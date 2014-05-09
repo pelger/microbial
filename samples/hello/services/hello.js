@@ -4,10 +4,12 @@ var options = { zkroot: 'localhost:2181', namespace: 'canon', start: 'all', ensu
 var mcb = require('../../../')(options);
 
 
+
 var whatever = function(req, res) {
   console.log('whatever');
   res.respond({say: 'whatever'});
 };
+
 
 
 var hello = function(req, res) {
@@ -16,12 +18,14 @@ var hello = function(req, res) {
 };
 
 
+
 var delegate = function(req, res) {
   console.log('mumble');
   res.request({topicName: 'request'}, {request: 'fallback'}, function(res2) {
     res.respond(res2.response);
   });
 };
+
 
 
 mcb.run([{group: 'hello', topicName: 'request'},
